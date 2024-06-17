@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/b0a180b3b8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <img src="img/bg.jpg"alt="no-img">
+    <div class="buttons">
+        <button onclick="showToast(successMsg)">Success</button><br>
+        <button onclick="showToast(errorMsg)">Error</button><br>
+        <button onclick="showToast(invaildMsg)">Invaild</button><br>
+    </div>
+<div id="toastbox">
+
+</div>
+<script>
+    let toastbox =document.getElementById('toastbox');
+    let successMsg ='<i class="fa-solid fa-circle-check"></i> Sucessfully submitted'
+    let errorMsg ='<i class="fa-solid fa-circle-xmark"></i> Please fix the error!'
+    let invaildMsg ='<i class="fa-solid fa-circle-exclamation"></i> You entered invaild Text'
+    function showToast(msg){
+        let toast = document.createElement('div');
+        toast.classList.add('toast');
+        toast.innerHTML = msg;
+        toastbox.appendChild(toast);
+        if(msg.includes('error')){
+            toast.classList.add('error');
+        }
+        if(msg.includes('invaild')){
+            toast.classList.add('invaild');
+        }
+        setTimeout( ()=>{
+            toast.remove();
+        },6000);
+    }
+</script>
+</body>
+</html>
